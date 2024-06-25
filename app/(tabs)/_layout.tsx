@@ -1,6 +1,6 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 type Props = {};
 
@@ -13,7 +13,21 @@ const enum TabsTitles {
 
 const TabsLayout = (props: Props) => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === "home/index") {
+            return <Ionicons name={"home"} size={size} color={color} />;
+          } else if (route.name === "services/index") {
+            return <Ionicons name={"grid-sharp"} size={size} color={color} />;
+          } else if (route.name === "activity/index") {
+            return <Ionicons name={"list"} size={size} color={color} />;
+          } else if (route.name === "account/index") {
+            return <Ionicons name={"person-sharp"} size={size} color={color} />;
+          }
+        },
+      })}
+    >
       <Tabs.Screen
         name="home/index"
         options={{ headerTitle: TabsTitles.Home, title: TabsTitles.Home }}
@@ -36,7 +50,7 @@ const TabsLayout = (props: Props) => {
         name="account/index"
         options={{
           headerTitle: TabsTitles.Services,
-          title: TabsTitles.Account,
+          title: TabsTitles.Services,
         }}
       />
     </Tabs>
