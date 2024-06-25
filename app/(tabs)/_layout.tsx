@@ -50,7 +50,7 @@ const TabsLayout = (props: Props) => {
         name="account/index"
         options={{
           headerTitle: TabsTitles.Services,
-          title: TabsTitles.Account,
+          title: TabsTitles.Services,
         }}
       />
     </Tabs>
